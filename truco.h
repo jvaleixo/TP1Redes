@@ -32,6 +32,6 @@ Baralho iniciaBaralho();
 Cartas DistribuiCartas(Cartas Baralho[], Jogadores J);
 int pedirmaispts(Jogadores J);
 int distribuipontos(Jogadores J);
-void nomedascartas(Baralho B);
+void nomedascartas(Cartas carta);
 
 #endif

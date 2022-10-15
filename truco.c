@@ -36,11 +36,9 @@ int distribuipontos(Jogadores J){ /*distribui os pontos entre as duplas após as
 Cartas truco(Cartas Baralho[CSBARALHO], Jogadores J){
 
 }
-void nomedascartas(Baralho B){
+void nomedascartas(Cartas carta){
     char aux[20];
-    int i = 0;
-    for(i = 0; i < CSBARALHO ; i++){
-        switch(B.carta[i].valor){
+        switch(carta.valor){
             case 0: 
                 strcpy(aux,"Quatro"); 
                 break;
@@ -72,7 +70,7 @@ void nomedascartas(Baralho B){
                 strcpy(aux,"Tres"); 
                 break;
         };
-        switch(B.carta[i].naipe){
+        switch(carta.naipe){
             case 0: 
                 strcat(aux," de espadas"); 
                 break;
@@ -86,15 +84,16 @@ void nomedascartas(Baralho B){
                 strcat(aux," de paus"); 
                 break;
         };
-        printf("Carta %d: %s\n",i,aux);
+        printf("%s\n",aux);
     }
-
-}
 
 int main(){
     Jogadores J; 
     int i = 0;
     Baralho Baralho = iniciaBaralho();
-    nomedascartas(Baralho);
+    for(i = 0; i < CSBARALHO; i++){
+       printf("Carta %d: ",i);
+       nomedascartas(Baralho.carta[i]); 
+    }
     return 0;
 }

@@ -3,89 +3,98 @@
 #include "truco.h"
 
 
-Cartas iniciaBaralho(Cartas Baralho){
-    int i = 0, vlr = 0, npe = 0;
-    for(i =0; i < CSBARALHO;i++){
-        Baralho.carta.valor = vlr;
-        Baralho.carta.naipe = npe;
+Baralho iniciaBaralho(){
+    Baralho aux[CSBARALHO];
+    int i = 0, j = 0, vlr = 0, npe = 0;
+    for(i = 0; i < CSBARALHO;i++){
+        aux->carta[i].sel = 0;
+        aux->carta[i].valor = vlr;
+        aux->carta[i].naipe = npe;
         vlr++;
-        npe++;
-        if(npe > 3){
-            npe = 0;   
-        } 
         if(vlr > 9){
             vlr = 0;
-        }     
-    }
-    return Baralho;
-};
-Cartas DistribuiCartas(Cartas Baralho, Jogadores J){
+        } 
+        if(i == 9 || i == 19 || i == 29){
+            npe++;
+        }
 
-};
+    }
+    return *aux;
+}
+Cartas DistribuiCartas(Cartas Baralho[CSBARALHO], Jogadores J){
+
+}
 Cartas verificavalor(Jogadores J){
 
-};
+}
 int pedirmaispts(Jogadores J){ /* pedir para a rodada valer mais pontos que o normal*/
 
-};
+}
 int distribuipontos(Jogadores J){ /*distribui os pontos entre as duplas após as jogadas*/
 
-};
-Cartas truco(Cartas Baralho, Jogadores J){
+}
+Cartas truco(Cartas Baralho[CSBARALHO], Jogadores J){
 
-};
-void nomedascartas(Cartas carta){
-    switch(carta.valor){
-        char aux[20]
-        case 0: 
-            strcpy(str,"Quatro"); 
-            break;
-        case 1: 
-            strcpy(str,"Cinco"); 
-            break;
-        case 2: 
-            strcpy(str,"Seis"); 
-            break;
-        case 3: 
-            strcpy(str,"Sete"); 
-            break;
-        case 4: 
-            strcpy(str,"Dama"); 
-            break;
-        case 5: 
-            strcpy(str,"Valete"); 
-            break;
-        case 6: 
-            strcpy(str,"Rei"); 
-            break;
-        case 7: 
-            strcpy(str,"As"); 
-            break;
-        case 8: 
-            strcpy(str,"Dois"); 
-            break;
-        case 9: 
-            strcpy(str,"Tres"); 
-            break;
+}
+void nomedascartas(Baralho B){
+    char aux[20];
+    int i = 0;
+    for(i = 0; i < CSBARALHO ; i++){
+        switch(B.carta[i].valor){
+            case 0: 
+                strcpy(aux,"Quatro"); 
+                break;
+            case 1: 
+                strcpy(aux,"Cinco"); 
+                break;
+            case 2: 
+                strcpy(aux,"Seis"); 
+                break;
+            case 3: 
+                strcpy(aux,"Sete"); 
+                break;
+            case 4: 
+                strcpy(aux,"Dama"); 
+                break;
+            case 5: 
+                strcpy(aux,"Valete"); 
+                break;
+            case 6: 
+                strcpy(aux,"Rei"); 
+                break;
+            case 7: 
+                strcpy(aux,"As"); 
+                break;
+            case 8: 
+                strcpy(aux,"Dois"); 
+                break;
+            case 9: 
+                strcpy(aux,"Tres"); 
+                break;
+        };
+        switch(B.carta[i].naipe){
+            case 0: 
+                strcat(aux," de espadas"); 
+                break;
+            case 1: 
+                strcat(aux," de ouro"); 
+                break;
+            case 2: 
+                strcat(aux," de copas"); 
+                break;
+            case 3: 
+                strcat(aux," de paus"); 
+                break;
+        };
+        printf("Carta %d: %s\n",i,aux);
     }
-    switch(carta.naipe){
-        case 0: 
-            strcat(str," de espadas"); 
-            break;
-        case 1: 
-            strcat(str," de ouro"); 
-            break;
-        case 2: 
-            strcat(str," de copas"); 
-            break;
-        case 3: 
-            strcat(str," de paus"); 
-            break;
-    }
-};
+
+}
 
 int main(){
-    Cartas Baralho[CSBARALHO];
     Jogadores J; 
+    int i = 0;
+    Baralho Baralho = iniciaBaralho();
+    nomedascartas(Baralho);
     return 0;
-};
+}

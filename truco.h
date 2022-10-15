@@ -16,6 +16,9 @@ enum cartas{QUATRO,CINCO,SEIS,SETE,DAMA,VALETE,REI,AS,DOIS,TRES,};*/
 typedef struct TCarta{
     int naipe, valor, sel; /* sel = 0 carta no baralho, sel = 1 carta com algum jogador*/ 
 }Cartas;
+typedef struct TBaralho{
+    Cartas carta[CSBARALHO];
+}Baralho;
 typedef struct TJogador{
     Cartas Cs[MAXCARTAS]; /* define o numero de cartas que cada jogadaor vai ter por rodada, no caso 3 como definido pelas regras do jogo*/
 }Jogador;
@@ -24,11 +27,11 @@ typedef struct TJogadores{
     int ponts[2];/*cada posiçao define a pontuacao de cada dupla*/
 }Jogadores;
 
-Cartas truco(Cartas Baralho, Jogadores j);
-Cartas iniciaBaralho(Cartas Baralho);
-Cartas DistribuiCartas(Cartas Baralho, Jogadores J);
+Cartas truco(Cartas Baralho[], Jogadores j);
+Baralho iniciaBaralho();
+Cartas DistribuiCartas(Cartas Baralho[], Jogadores J);
 int pedirmaispts(Jogadores J);
 int distribuipontos(Jogadores J);
-void nomedascartas(Cartas carta);
+void nomedascartas(Baralho B);
 
 #endif

@@ -21,14 +21,21 @@ typedef struct TJogador{
 }Jogador;
 typedef struct TJogadores{
     Jogador js[MAXJOGADORES];
-    int ponts[2];/*cada posiçao define a pontuacao de cada dupla*/
+    int ptd1;
+    int ptd2; 
+    int pr1;
+    int pr2;
+    int pj1;
+    int pj2;
 }Jogadores;
 
-Cartas truco(Baralho B, Jogadores j);
+Jogadores truco(Baralho B, Jogadores j);
 Baralho iniciaBaralho();
 Jogadores distribuirCartas(Baralho B, Jogadores J);
+Jogadores verificavalor(Cartas c1, Cartas c2, Jogadores J, int valemais);
 int pedirmaispts(Jogadores J);
-int distribuipontos(Jogadores J);
+Jogadores distribuirPontos(Jogadores J,int j,int valemais);
 void nomedascartas(Cartas carta);
+void printaPontos(Jogadores J);
 
 #endif

@@ -10,9 +10,6 @@
 #define MAXPTS 12
 
 
-/*enum naipes{ESPADA,OURO,COPAS,PAUS};
-enum cartas{QUATRO,CINCO,SEIS,SETE,DAMA,VALETE,REI,AS,DOIS,TRES,};*/
-
 typedef struct TCarta{
     int naipe, valor, sel; /* sel = 0 carta no baralho, sel = 1 carta com algum jogador*/ 
 }Cartas;
@@ -27,9 +24,9 @@ typedef struct TJogadores{
     int ponts[2];/*cada posiçao define a pontuacao de cada dupla*/
 }Jogadores;
 
-Cartas truco(Cartas Baralho[], Jogadores j);
+Cartas truco(Baralho B, Jogadores j);
 Baralho iniciaBaralho();
-Cartas DistribuiCartas(Cartas Baralho[], Jogadores J);
+Jogadores distribuirCartas(Baralho B, Jogadores J);
 int pedirmaispts(Jogadores J);
 int distribuipontos(Jogadores J);
 void nomedascartas(Cartas carta);

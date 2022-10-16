@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+#include <stdlib.h>
 #include "truco.h"
 
 
@@ -21,9 +23,32 @@ Baralho iniciaBaralho(){
     }
     return *aux;
 }
-Cartas DistribuiCartas(Cartas Baralho[CSBARALHO], Jogadores J){
-
-}
+Jogadores distribuirCartas(Baralho B, Jogadores J){
+    srand(time(NULL));
+    int i = 0, j = 0, contador = 0, aux=0;
+        for(j = 0; j < CSBARALHO; j++){
+            int r = rand() % CSBARALHO;
+            /*printf("%d\n",r);*/
+            /*printf("carta %d selecionada\n",j);
+            nomedascartas(B.carta[r]);*/
+            if(B.carta[r].sel == 0){
+                J.js[aux].Cs[contador].valor = B.carta[r].valor;
+                J.js[aux].Cs[contador].naipe = B.carta[r].naipe;
+                /*printf("carta %d do jogador %d\n",contador,aux);
+                nomedascartas(J.js[aux].Cs[contador]);*/
+                B.carta[r].sel = 1;
+                contador++;
+            }
+            if(contador == 3){
+                contador = 0;
+                aux++;
+            }
+            if(aux == 4){
+                break;
+            }
+        }
+        return J;
+    }
 Cartas verificavalor(Jogadores J){
 
 }
@@ -33,7 +58,7 @@ int pedirmaispts(Jogadores J){ /* pedir para a rodada valer mais pontos que o no
 int distribuipontos(Jogadores J){ /*distribui os pontos entre as duplas após as jogadas*/
 
 }
-Cartas truco(Cartas Baralho[CSBARALHO], Jogadores J){
+Cartas truco(Baralho B, Jogadores J){
 
 }
 void nomedascartas(Cartas carta){
@@ -87,13 +112,26 @@ void nomedascartas(Cartas carta){
         printf("%s\n",aux);
     }
 
-int main(){
-    Jogadores J; 
-    int i = 0;
-    Baralho Baralho = iniciaBaralho();
-    for(i = 0; i < CSBARALHO; i++){
+int main(){ 
+    int i = 0, j = 0, aux = 0, contador = 0;
+    Baralho B = iniciaBaralho();
+    Jogadores J = distribuirCartas(B,J); 
+    /*for(i = 0; i < MAXJOGADORES*3; i++){
+       printf("Carta %d do jogador %d\n",contador+1,aux);
+       nomedascartas(J.js[aux].Cs[contador]); 
+       contador++;
+       if(contador == 3){
+            contador = 0;
+            aux++;
+        }
+        if(aux == 4){
+            break;
+        }
+    }
+    apenas para teste se a função distribuirCartas funciona corretamente*/
+    /*for(i = 0; i < CSBARALHO; i++){
        printf("Carta %d: ",i);
        nomedascartas(Baralho.carta[i]); 
-    }
+    } apenas para teste se a função inicia baralho funciona corretamente*/
     return 0;
 }

@@ -33,9 +33,10 @@ Jogadores truco(Baralho B, Jogadores j);
 Baralho iniciaBaralho();
 Jogadores distribuirCartas(Baralho B, Jogadores J);
 Jogadores verificavalor(Cartas c1, Cartas c2, Jogadores J, int valemais);
-int pedirmaispts(Jogadores J);
+int pedirmaispts(int vlm);
 Jogadores distribuirPontos(Jogadores J,int j,int valemais);
 void nomedascartas(Cartas carta);
 void printaPontos(Jogadores J);
 
-#endif
+
+#endif 

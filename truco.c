@@ -75,6 +75,11 @@ Jogadores verificavalor(Cartas c1, Cartas c2, Jogadores J,int valemais){
 
     */
     int j = 0;
+    if(c1.valor == c2.valor && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0))){
+        printf("Empate!, ninguém ganha ponto nessa rodada\n");
+        j = 0;
+        J = distribuirPontos(J,j,valemais);
+    }
     if(c1.valor == 0 && c1.naipe == 3){
         printf("A carta 1 é maior carta do jogo\n");
         j=1;
@@ -85,15 +90,61 @@ Jogadores verificavalor(Cartas c1, Cartas c2, Jogadores J,int valemais){
         j = 2;
         J = distribuirPontos(J,j,valemais);
     }
+    if((c1.valor == 3 && c1.naipe == 2) && (c2.valor != 0 && c2.naipe != 3)){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    }
+    if((c2.valor == 3 && c2.naipe == 2) && (c1.valor != 0 && c1.naipe != 3)){
+        printf("A carta 2 vence\n");
+        j = 2;
+        J = distribuirPontos(J,j,valemais);
+    }
+    if((c1.valor == 7 && c1.naipe == 0) && ((c2.valor != 0 && c2.naipe != 3) && (c2.valor !=3 && c2.naipe !=2))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    }
+    if((c2.valor == 7 && c2.naipe == 0) && ((c1.valor != 0 && c1.naipe != 3) && (c1.valor !=3 && c1.naipe !=2))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    }
+    if((c1.valor == 3 && c1.naipe == 1) && ((c2.valor != 0 && c2.naipe != 3) && (c2.valor !=3 && c2.naipe !=2) && (c2.valor == 7 && c2.naipe == 0))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    }
+    if((c2.valor == 3 && c2.naipe == 1) && ((c1.valor != 0 && c1.naipe != 3) && (c1.valor !=3 && c1.naipe !=2) && (c1.valor == 7 && c1.naipe == 0))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    }
+
+    if((c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    }
+    if((c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    }
     return J;
 }
-int pedirmaispts(Jogadores J){ /* pedir para a rodada valer mais pontos que o normal*/
+int pedirmaispts(int vlm){ /* pedir para a rodada valer mais pontos que o normal*/
     int valemais = 0;
-    /*if()*/
-    printf("função para pedir mais pontos\n");
+    if(vlm == 1){
+        valemais = 1;
+    }
     return valemais;
 }
 Jogadores distribuirPontos(Jogadores J,int j, int valemais){ /*distribui os pontos entre as duplas após as jogadas*/
+    if(j==0){
+        J.ptd1 += 0;
+        J.ptd2 += 0;
+    }
     if(j == 1 && valemais == 0){
         J.ptd1 += 2;
     }
@@ -139,51 +190,68 @@ Jogadores distribuirPontos(Jogadores J,int j, int valemais){ /*distribui os pont
     return J;
 }
 void printaPontos(Jogadores J){
-    printf("Pontos da dupla 1: %d\n",J.ptd1);
-    printf("Pontos da dupla 2: %d\n",J.ptd2);
+    printf("Pontos da dupla 1 na rodada: %d\n",J.ptd1);
+    printf("Pontos da dupla 2 na rodada: %d\n",J.ptd2);
 }
 Jogadores truco(Baralho B, Jogadores J){
     /*menu com opcoes chamando as funcoes*/
-    int opt, contador = 0,i = 0;
+    int opt, contador = 0,i = 0,aux=0,ce =0,j=0,vlm=0,valemais=0;
+    Cartas cartaEscolhida;
     opt = -1;
     while(opt != 0){
         printf("Jogo de truco!\n");
-        printf("0 - Sair do jogo\n");
+        printf("0 - Sair da rodada\n");
         printf("1 - Ver suas cartas\n");
-        printf("2 - Ver pontos da sua dupla\n");
+        printf("2 - Ver pontos\n");
         printf("3 - Jogar uma carta\n");
-        printf("4 - Pedir truco\n");
         scanf("%d",&opt);
         switch(opt){
             case 0: 
-                printf("Saindo do jogo\n");
+                printf("Saindo da rodada\n");
                 break;
             case 1:
                 for(i = 0; i < MAXCARTAS; i++){
-                printf("Carta %d do jogador 0\n",contador+1);
-                nomedascartas(J.js[0].Cs[contador]); 
-                contador++;
-                if(contador == 3){
-                        contador = 0;
-                    }
+                    printf("Carta %d do jogador 0\n",contador+1);
+                    nomedascartas(J.js[0].Cs[contador]); 
+                    contador++;
+                    if(contador == 3){
+                            contador = 0;
+                        }
                 }
                 break;
             case 2:
                 printaPontos(J);
                 break;
             case 3:
-                printf("Escolha a carta para jogar\n");
+                printf("Escolha a carta para jogar, digite um numero entre 1 e 3\n");
+                J.js[aux+1].Cs[0].valor = 9;
+                J.js[aux+1].Cs[0].naipe = 0;
                 for(i = 0; i < MAXCARTAS; i++){
-                printf("Carta %d do jogador 0\n",contador+1);
-                nomedascartas(J.js[0].Cs[contador]); 
-                contador++;
-                if(contador == 3){
-                        contador = 0;
+                    printf("Carta %d do jogador 0\n",contador+1);
+                    nomedascartas(J.js[aux].Cs[contador]); 
+                    contador++;
+                    if(contador == 3){
+                            contador = 0;
+                        }
+                }
+                scanf("%d",&ce);
+                cartaEscolhida = J.js[aux].Cs[ce-1];
+                for(j =0 ; j < CSBARALHO ; j++){
+                    if(cartaEscolhida.valor == B.carta[i].valor && B.carta[i].sel == 1){
+                        B.carta[i].sel = 0;
+                        J.js[aux].Cs[ce-1].valor = -1;
+                        J.js[aux].Cs[ce-1].naipe = -1;
                     }
                 }
-                break;
-            case 4: 
-                pedirmaispts(J);
+                printf("A carta escolhida foi : ");
+                nomedascartas(cartaEscolhida); 
+                printf("Deseja aumentar os pontos dessa rodada? 0 - nao, 1 - sim\n");
+                scanf("%d",&vlm);
+                valemais = pedirmaispts(J,vlm);
+                printf("cartas em jogo:\n");
+                nomedascartas(cartaEscolhida);
+                nomedascartas(J.js[aux+1].Cs[0]);
+                J = verificavalor(cartaEscolhida,J.js[aux+1].Cs[0],J,valemais);
                 break;
             default:
                 printf("Digite uma opção válida\n");
@@ -244,9 +312,17 @@ void nomedascartas(Cartas carta){
 }
 
 int main(){ 
-    Baralho B = iniciaBaralho();
-    Jogadores J = distribuirCartas(B,J); 
-    truco(B,J);
+    int i = 0,j = 0;
+    for(i = 0; i < 3; i++){
+    printf("Mão %d\n",i+1);
+       for(j =0; j < 3; j++){
+        printf("Rodada %d\n",j+1);
+        Baralho B = iniciaBaralho();
+        Jogadores J = distribuirCartas(B,J); 
+        truco(B,J); 
+       } 
+    }
+
     /*int i = 0, aux = 0, contador = 0;*/
     /*J.js[0].Cs[0].valor = 0;
     J.js[0].Cs[0].naipe = 3; 

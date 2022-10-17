@@ -8,7 +8,9 @@
 #define CSBARALHO 40
 #define MAXJOGADORES 4
 #define MAXPTS 12
-
+#define TRUE 1
+#define FALSE 0
+#define PORT 8888
 
 typedef struct TCarta{
     int naipe, valor, sel; /* sel = 0 carta no baralho, sel = 1 carta com algum jogador*/ 

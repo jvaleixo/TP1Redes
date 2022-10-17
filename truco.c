@@ -76,57 +76,118 @@ Jogadores verificavalor(Cartas c1, Cartas c2, Jogadores J,int valemais){
     */
     int j = 0;
     if(c1.valor == c2.valor && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0))){
-        printf("Empate!, ninguém ganha ponto nessa rodada\n");
+        printf("Empate! ninguém ganha ponto nessa rodada\n");
         j = 0;
         J = distribuirPontos(J,j,valemais);
-    }
-    if(c1.valor == 0 && c1.naipe == 3){
+    } else if(c1.valor == 0 && c1.naipe == 3){
         printf("A carta 1 é maior carta do jogo\n");
         j=1;
         J = distribuirPontos(J,j,valemais);
-    }
-    if(c2.valor == 0 && c2.naipe == 3){
+    } else if(c2.valor == 0 && c2.naipe == 3){
         printf("A carta 2 é maior carta do jogo\n");
         j = 2;
         J = distribuirPontos(J,j,valemais);
-    }
-    if((c1.valor == 3 && c1.naipe == 2) && (c2.valor != 0 && c2.naipe != 3)){
+    } else if((c1.valor == 3 && c1.naipe == 2) && (c2.valor != 0 && c2.naipe != 3)){
         printf("A carta 1 vence\n");
         j=1;
         J = distribuirPontos(J,j,valemais);
-    }
-    if((c2.valor == 3 && c2.naipe == 2) && (c1.valor != 0 && c1.naipe != 3)){
+    } else if((c2.valor == 3 && c2.naipe == 2) && (c1.valor != 0 && c1.naipe != 3)){
         printf("A carta 2 vence\n");
         j = 2;
         J = distribuirPontos(J,j,valemais);
-    }
-    if((c1.valor == 7 && c1.naipe == 0) && ((c2.valor != 0 && c2.naipe != 3) && (c2.valor !=3 && c2.naipe !=2))){
+    } else if((c1.valor == 7 && c1.naipe == 0) && ((c2.valor != 0 && c2.naipe != 3) && (c2.valor !=3 && c2.naipe !=2))){
         printf("A carta 1 vence\n");
         j=1;
         J = distribuirPontos(J,j,valemais);
-    }
-    if((c2.valor == 7 && c2.naipe == 0) && ((c1.valor != 0 && c1.naipe != 3) && (c1.valor !=3 && c1.naipe !=2))){
+    } else if((c2.valor == 7 && c2.naipe == 0) && ((c1.valor != 0 && c1.naipe != 3) && (c1.valor !=3 && c1.naipe !=2))){
         printf("A carta 2 vence\n");
         j=2;
         J = distribuirPontos(J,j,valemais);
-    }
-    if((c1.valor == 3 && c1.naipe == 1) && ((c2.valor != 0 && c2.naipe != 3) && (c2.valor !=3 && c2.naipe !=2) && (c2.valor == 7 && c2.naipe == 0))){
+    } else if((c1.valor == 3 && c1.naipe == 1) && ((c2.valor != 0 && c2.naipe != 3) && (c2.valor !=3 && c2.naipe !=2) && (c2.valor == 7 && c2.naipe == 0))){
         printf("A carta 1 vence\n");
         j=1;
         J = distribuirPontos(J,j,valemais);
-    }
-    if((c2.valor == 3 && c2.naipe == 1) && ((c1.valor != 0 && c1.naipe != 3) && (c1.valor !=3 && c1.naipe !=2) && (c1.valor == 7 && c1.naipe == 0))){
+    } else if((c2.valor == 3 && c2.naipe == 1) && ((c1.valor != 0 && c1.naipe != 3) && (c1.valor !=3 && c1.naipe !=2) && (c1.valor == 7 && c1.naipe == 0))){
         printf("A carta 2 vence\n");
         j=2;
         J = distribuirPontos(J,j,valemais);
-    }
-
-    if((c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0))){
+    } else if((c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0))){
         printf("A carta 1 vence\n");
         j=1;
         J = distribuirPontos(J,j,valemais);
-    }
-    if((c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0))){
+    } else if((c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 7 && (c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 7 && (c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 6 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 7 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 6 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 7 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 5 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 7 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 6 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 5 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 7 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 6 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 4 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 7 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 6 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 5 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 7 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 6 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 5 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 3 && (c1.naipe == 0 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 7 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 6 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 5 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 3 && (c2.naipe == 0 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 7 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 6 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 5 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 4 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 2 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 7 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 6 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 5 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 3 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 2 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 7 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 6 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 5 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 3 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 1 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 7 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 6 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 5 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 3 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 2 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 1 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 7 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 6 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 5 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 3 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c1.valor == 2 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
+        printf("A carta 2 vence\n");
+        j=2;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c1.valor == 0 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 )) && ((c2.valor != 0 && c2.naipe != 3) || (c2.valor !=3 && c2.naipe !=2) || (c2.valor == 7 && c2.naipe == 0) || (c2.valor == 9 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 8 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 7 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 6 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 5 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 3 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 2 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 1 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)))){
+        printf("A carta 1 vence\n");
+        j=1;
+        J = distribuirPontos(J,j,valemais);
+    } else if((c2.valor == 0 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 )) && ((c1.valor != 0 && c1.naipe != 3) || (c1.valor !=3 && c1.naipe !=2) || (c1.valor == 7 && c1.naipe == 0) || (c1.valor == 9 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 8 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 7 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 6 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 5 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c2.valor == 4 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c2.valor == 3 && (c2.naipe == 0 || c2.naipe == 1 || c2.naipe == 2 || c2.naipe ==3)) || (c1.valor == 2 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)) || (c1.valor == 1 && (c1.naipe == 0 || c1.naipe == 1 || c1.naipe == 2 || c1.naipe ==3)))){
         printf("A carta 2 vence\n");
         j=2;
         J = distribuirPontos(J,j,valemais);
@@ -224,8 +285,6 @@ Jogadores truco(Baralho B, Jogadores J){
                 break;
             case 3:
                 printf("Escolha a carta para jogar, digite um numero entre 1 e 3\n");
-                J.js[aux+1].Cs[0].valor = 9;
-                J.js[aux+1].Cs[0].naipe = 0;
                 for(i = 0; i < MAXCARTAS; i++){
                     printf("Carta %d do jogador 0\n",contador+1);
                     nomedascartas(J.js[aux].Cs[contador]); 
@@ -247,7 +306,7 @@ Jogadores truco(Baralho B, Jogadores J){
                 nomedascartas(cartaEscolhida); 
                 printf("Deseja aumentar os pontos dessa rodada? 0 - nao, 1 - sim\n");
                 scanf("%d",&vlm);
-                valemais = pedirmaispts(J,vlm);
+                valemais = pedirmaispts(vlm);
                 printf("cartas em jogo:\n");
                 nomedascartas(cartaEscolhida);
                 nomedascartas(J.js[aux+1].Cs[0]);

@@ -11,6 +11,7 @@
 #include <sys/time.h> /*FD_SET, FD_ISSET, FD_ZERO macros*/
 #include "truco.h"
 
+#define PORT 8080
 
 
 Baralho iniciaBaralho(){
@@ -327,7 +328,7 @@ Jogadores truco(Baralho B, Jogadores J){
     } 
     return J;
 }
-void nomedascartas(Cartas carta){
+char nomedascartas(Cartas carta){
     char aux[20];
         switch(carta.valor){
             case 0: 
@@ -376,6 +377,7 @@ void nomedascartas(Cartas carta){
                 break;
         };
         printf("%s\n",aux);
+        return aux;
 }
 
 int main(int argc , char *argv[]){ 
@@ -383,10 +385,11 @@ int main(int argc , char *argv[]){
     int i = 0,j = 0;
     int opt = TRUE;
 	int master_socket , addrlen , new_socket , client_socket[30] ,
-		max_clients = 30 , activity, valread , sd;
+		max_clients = 2 , activity, valread , sd;
 	int max_sd;
 	struct sockaddr_in address;
-		
+	Baralho B = iniciaBaralho();
+    Jogadores J = distribuirCartas(B,J);
 	char buffer[1025]; /*data buffer of 1K*/
 		
 	/*set of socket descriptors*/
@@ -394,7 +397,6 @@ int main(int argc , char *argv[]){
 		
 	/*a message*/
 	char *message = "Jogo de truco \r\n";
-
 	/*initialise all client_socket[] to 0 so not checked*/
 	for (i = 0; i < max_clients; i++)
 	{
@@ -537,8 +539,10 @@ int main(int argc , char *argv[]){
 				{
 					/*set the string terminating NULL byte on the end
 					of the data read*/
-					buffer[valread] = '\0';
-					send(sd , buffer , strlen(buffer) , 0 );
+                    buffer[valread] = '\0';
+					send(sd , buffer, strlen(buffer) , 0 );
+                    recv(sd,buffer, strlen(buffer),0);
+
 				}
 			}
 		}
